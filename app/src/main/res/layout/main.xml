@@ -42,6 +42,16 @@
             android:layout_height="wrap_content">
 
             <Spinner
+                android:id="@+id/spinner4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Spinner
+                android:id="@+id/spinner3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Spinner
                 android:id="@+id/spinner2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -50,13 +60,13 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="검색어를 입력하세요" />
 
             <Button
                 android:id="@+id/button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:text="검색" />
 
         </TableRow>
     </TableLayout>
@@ -88,6 +98,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onSKKUlinkButtonClicked"
-        android:text="Button" />
+        android:text="학생인재개발팀 Contact" />
 
 </LinearLayout>
