@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         Spinner spinner1 = (Spinner) findViewById(R.id.spinner1);
         Spinner spinner2 = (Spinner) findViewById(R.id.spinner2);
         Spinner spinner3 = (Spinner) findViewById(R.id.spinner3);
-
+        // 스피너 이용 드롭다운
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(
                 this,
                 android.R.layout.simple_spinner_item,
@@ -40,11 +40,12 @@ public class MainActivity extends AppCompatActivity {
                 android.R.layout.simple_spinner_item,
                 SpinnerArr3
         );
-
+        // 어뎁터 이용, 드롭다운 메뉴 내용
 
         spinner1.setAdapter(adapter1);
         spinner2.setAdapter(adapter2);
         spinner3.setAdapter(adapter3);
+        // 어뎁터 세팅
         spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
