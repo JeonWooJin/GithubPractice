@@ -8,18 +8,22 @@
     // 라디오 버튼
 
     <TableLayout
-        android:id="@+id/RadioButtonTable"
-        android:layout_width="match_parent"
+        android:id="@+id/RadioTable"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp">
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="0dp"
             android:orientation="vertical">
 
             <RadioGroup
                 android:id="@+id/SearchRadioGroup"
+                android:layout_marginTop="20dp"
                 android:checkedButton="@+id/AllContent"
                 android:orientation="horizontal">
 
@@ -27,13 +31,14 @@
                     android:id="@+id/AllContent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
+                    android:paddingRight="20dp"
                     android:text="전체" />
 
                 <RadioButton
                     android:id="@+id/OnGoingContent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingRight="20dp"
                     android:text="진행(예정)" />
 
                 <RadioButton
@@ -46,61 +51,66 @@
         </TableRow>
     </TableLayout>
 
-    // 드롭다운 메뉴
+    <TableLayout
+        android:id="@+id/DropDown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:orientation="vertical">
+
+            <Spinner
+                android:id="@+id/spinner1"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content" />
+
+            <Spinner
+                android:id="@+id/spinner2"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content" />
+
+            <Spinner
+                android:id="@+id/spinner3"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content" />
+        </TableRow>
+    </TableLayout>
+
     <TableLayout
         android:id="@+id/SearchBoxTable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="30dp">
+        android:layout_marginTop="5dp">
+
+        // 검색박스, 검색버튼
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <Spinner
-                android:id="@+id/spinner1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-
-            <Spinner
-                android:id="@+id/spinner2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-
-            <Spinner
-                android:id="@+id/spinner3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-        </TableRow>
-
-        // 검색박스, 검색버튼
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="검색어를 입력하세요"
+                android:layout_height="30dp"
                 android:layout_weight="0.2"
-                android:layout_marginLeft="40dp"/>
+                android:text="검색어를 입력하세요" />
 
             <Button
                 android:id="@+id/button"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:text="검색"
-                />
+                android:text="검색" />
         </TableRow>
 
     </TableLayout>
-
     // 메인메뉴 컨텐츠
 
     <TableLayout
@@ -108,8 +118,39 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp">
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="25dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="캠퍼스"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:text="제목"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="행사일시"
+                android:textAlignment="center" />
+
+        </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
@@ -117,71 +158,34 @@
             android:layout_marginBottom="15dp">
 
             <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="TextView"
-                android:textAlignment="center"
-                tools:text="캠퍼스" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.5"
-                android:text="TextView"
-                android:textAlignment="center"
-                tools:text="제목" />
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="TextView"
-                android:textAlignment="center"
-                tools:text="행사일시" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="10dp">
-
-            <TextView
                 android:id="@+id/MainContent1_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:text="TextView"
-                android:textAlignment="center"
-                tools:text="인사캠" />
+                android:text="인사캠"
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/MainContent1_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
-                android:text="TextView"
-                android:textAlignment="center"
-                tools:text="FIS시스템 주식회사..." />
+                android:text="FIS시스템 주식회사..."
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/MainContent1_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:text="TextView"
-                android:textAlignment="center"
-                tools:text="2017-05-24" />
+                android:text="2017-05-24"
+                android:textAlignment="center" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="15dp">
 
             <TextView
                 android:id="@+id/MainContent2_1"
@@ -214,7 +218,7 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="15dp">
 
             <TextView
                 android:id="@+id/MainContent3_1"
@@ -247,10 +251,10 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="15dp">
 
             <TextView
-                android:id="@+id/MainContent3_1"
+                android:id="@+id/MainContent4_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
@@ -259,7 +263,7 @@
                 tools:text="인사캠" />
 
             <TextView
-                android:id="@+id/MainContent3_2"
+                android:id="@+id/MainContent4_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
@@ -268,7 +272,7 @@
                 tools:text="FIS시스템 주식회사..." />
 
             <TextView
-                android:id="@+id/MainContent3_3"
+                android:id="@+id/MainContent4_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
@@ -280,10 +284,10 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="15dp">
 
             <TextView
-                android:id="@+id/MainContent3_1"
+                android:id="@+id/MainContent5_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
@@ -292,7 +296,7 @@
                 tools:text="인사캠" />
 
             <TextView
-                android:id="@+id/MainContent3_2"
+                android:id="@+id/MainContent5_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
@@ -301,7 +305,7 @@
                 tools:text="FIS시스템 주식회사..." />
 
             <TextView
-                android:id="@+id/MainContent3_3"
+                android:id="@+id/MainContent5_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
@@ -314,10 +318,10 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="15dp">
 
             <TextView
-                android:id="@+id/MainContent3_1"
+                android:id="@+id/MainContent6_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
@@ -326,7 +330,7 @@
                 tools:text="인사캠" />
 
             <TextView
-                android:id="@+id/MainContent3_2"
+                android:id="@+id/MainContent6_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
@@ -335,7 +339,7 @@
                 tools:text="FIS시스템 주식회사..." />
 
             <TextView
-                android:id="@+id/MainContent3_3"
+                android:id="@+id/MainContent6_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
@@ -347,7 +351,9 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="5dp">
 
             <Button
                 android:id="@+id/button5"
