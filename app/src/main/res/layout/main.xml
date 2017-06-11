@@ -350,26 +350,41 @@
         </TableRow>
 
         <TableRow
+            android:id="@+id/MoreButton"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="right">
+
+            <Button
+                android:id="@+id/MoreButton"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="더보기"
+                tools:text="더보기" />
+        </TableRow>
+
+        <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="25dp"
-            android:layout_marginRight="5dp">
+            android:layout_marginRight="10dp">
 
             <Button
-                android:id="@+id/button5"
+                android:id="@+id/Tap1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Button"
+                android:text="리쿠르팅탭"
                 tools:text="리크루팅" />
 
             <Button
-                android:id="@+id/button6"
+                android:id="@+id/Tap2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:text="Button"
+                android:text="채용설명회탭"
                 tools:text="채용설명회" />
+
         </TableRow>
 
     </TableLayout>
