@@ -104,7 +104,7 @@
                 android:text="검색어를 입력하세요" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/SearchButton"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:text="검색" />
@@ -359,6 +359,7 @@
                 android:id="@+id/MoreButton"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
+                android:onClick="onMoreButtonClicked"
                 android:text="더보기"
                 tools:text="더보기" />
         </TableRow>

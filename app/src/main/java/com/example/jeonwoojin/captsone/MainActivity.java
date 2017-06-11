@@ -5,10 +5,15 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Spinner;
+
+import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -82,8 +87,15 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    void onSKKUlinkButtonClicked(View v){
+    void onSKKUlinkButtonClicked(View v){ // 학생 인재개발팀 Contact 버튼 연결
         Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://job.skku.edu"));
         startActivity(i);
     }
+
+    void onMoreButtonClicked(View v){
+        Intent i = new Intent(getApplicationContext(), searchresultactivity.class);
+        startActivity(i);
+    }
 }
+
+
