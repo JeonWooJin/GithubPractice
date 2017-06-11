@@ -121,8 +121,8 @@ public class MainActivity extends AppCompatActivity {
     }
     void onHomeButtonClicked(View v){
         Intent i = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(i);
         finish();
+        startActivity(i);
     }
 }
 

@@ -154,6 +154,10 @@ public class searchresultactivity extends AppCompatActivity {
         finish();
         startActivity(i);
     }
+    void onContentClicked(View v){
+        Intent i = new Intent(getApplicationContext(), detailResult.class);
+        startActivity(i);
+    }
 }
 
 
