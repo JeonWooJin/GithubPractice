@@ -92,15 +92,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/textView"
+            <EditText
+                android:id="@+id/SearchBoxInput"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="0.2"
-                android:text="검색어를 입력하세요" />
+                android:hint="검색어를 입력하세요" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/SearchButton"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:text="검색" />
@@ -109,7 +109,7 @@
     </TableLayout>
 
     <ListView
-        android:id="@+id/listView"
+        android:id="@+id/SearchlistView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true">

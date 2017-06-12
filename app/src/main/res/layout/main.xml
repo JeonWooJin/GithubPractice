@@ -98,12 +98,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/textView"
+            <EditText
+                android:id="@+id/SearchBoxInput"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="0.2"
-                android:text="검색어를 입력하세요" />
+                android:hint="검색어를 입력하세요" />
 
             <Button
                 android:id="@+id/SearchButton"
@@ -115,282 +115,287 @@
     </TableLayout>
     // 메인메뉴 컨텐츠
 
-    <TableLayout
-        android:id="@+id/ContentTable"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="25dp">
-
-        <TableRow
+        android:id="@+id/contentpart"
+        android:orientation="vertical">
+        <TableLayout
+            android:id="@+id/ContentTable"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="20dp">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="25dp">
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="캠퍼스"
-                android:textAlignment="center" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp">
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.5"
-                android:text="제목"
-                android:textAlignment="center" />
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="캠퍼스"
+                    android:textAlignment="center" />
 
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="행사일시"
-                android:textAlignment="center" />
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="제목"
+                    android:textAlignment="center" />
 
-        </TableRow>
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="행사일시"
+                    android:textAlignment="center" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="15dp">
+            </TableRow>
 
-            <TextView
-                android:id="@+id/MainContent1_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="인사캠"
-                android:textAlignment="center" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="15dp">
 
-            <TextView
-                android:id="@+id/MainContent1_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.5"
-                android:text="FIS시스템 주식회사..."
-                android:textAlignment="center" />
+                <TextView
+                    android:id="@+id/MainContent1_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="인사캠"
+                    android:textAlignment="center" />
 
-            <TextView
-                android:id="@+id/MainContent1_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="2017-05-24"
-                android:textAlignment="center" />
-        </TableRow>
+                <TextView
+                    android:id="@+id/MainContent1_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="FIS시스템 주식회사..."
+                    android:textAlignment="center" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="15dp">
+                <TextView
+                    android:id="@+id/MainContent1_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="2017-05-24"
+                    android:textAlignment="center" />
+            </TableRow>
 
-            <TextView
-                android:id="@+id/MainContent2_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="TextView"
-                android:textAlignment="center"
-                tools:text="인사캠" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="15dp">
 
-            <TextView
-                android:id="@+id/MainContent2_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.5"
-                android:text="TextView"
-                android:textAlignment="center"
-                tools:text="FIS시스템 주식회사..." />
+                <TextView
+                    android:id="@+id/MainContent2_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="TextView"
+                    android:textAlignment="center"
+                    />
 
-            <TextView
-                android:id="@+id/MainContent2_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="TextView"
-                android:textAlignment="center"
-                tools:text="2017-05-24" />
-        </TableRow>
+                <TextView
+                    android:id="@+id/MainContent2_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="TextView"
+                    android:textAlignment="center"
+                    />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="15dp">
+                <TextView
+                    android:id="@+id/MainContent2_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="TextView"
+                    android:textAlignment="center"
+                    />
+            </TableRow>
 
-            <TextView
-                android:id="@+id/MainContent3_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="TextView"
-                android:textAlignment="center"
-                tools:text="인사캠" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="15dp">
 
-            <TextView
-                android:id="@+id/MainContent3_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.5"
-                android:text="TextView"
-                android:textAlignment="center"
-                tools:text="FIS시스템 주식회사..." />
+                <TextView
+                    android:id="@+id/MainContent3_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="TextView"
+                    android:textAlignment="center"
+                    />
 
-            <TextView
-                android:id="@+id/MainContent3_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="TextView"
-                android:textAlignment="center"
-                tools:text="2017-05-24" />
-        </TableRow>
+                <TextView
+                    android:id="@+id/MainContent3_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="TextView"
+                    android:textAlignment="center"
+                    />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="15dp">
+                <TextView
+                    android:id="@+id/MainContent3_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="TextView"
+                    android:textAlignment="center"
+                    />
+            </TableRow>
 
-            <TextView
-                android:id="@+id/MainContent4_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="TextView"
-                android:textAlignment="center"
-                tools:text="인사캠" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="15dp">
 
-            <TextView
-                android:id="@+id/MainContent4_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.5"
-                android:text="TextView"
-                android:textAlignment="center"
-                tools:text="FIS시스템 주식회사..." />
+                <TextView
+                    android:id="@+id/MainContent4_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="TextView"
+                    android:textAlignment="center"
+                    />
 
-            <TextView
-                android:id="@+id/MainContent4_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="TextView"
-                android:textAlignment="center"
-                tools:text="2017-05-24" />
-        </TableRow>
+                <TextView
+                    android:id="@+id/MainContent4_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="TextView"
+                    android:textAlignment="center"
+                    />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="15dp">
+                <TextView
+                    android:id="@+id/MainContent4_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="TextView"
+                    android:textAlignment="center"
+                    />
+            </TableRow>
 
-            <TextView
-                android:id="@+id/MainContent5_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="TextView"
-                android:textAlignment="center"
-                tools:text="인사캠" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="15dp">
 
-            <TextView
-                android:id="@+id/MainContent5_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.5"
-                android:text="TextView"
-                android:textAlignment="center"
-                tools:text="FIS시스템 주식회사..." />
+                <TextView
+                    android:id="@+id/MainContent5_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="TextView"
+                    android:textAlignment="center"
+                    />
 
-            <TextView
-                android:id="@+id/MainContent5_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="TextView"
-                android:textAlignment="center"
-                tools:text="2017-05-24" />
+                <TextView
+                    android:id="@+id/MainContent5_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="TextView"
+                    android:textAlignment="center"
+                    />
 
-        </TableRow>
+                <TextView
+                    android:id="@+id/MainContent5_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="TextView"
+                    android:textAlignment="center"
+                    />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="15dp">
+            </TableRow>
 
-            <TextView
-                android:id="@+id/MainContent6_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="TextView"
-                android:textAlignment="center"
-                tools:text="인사캠" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="15dp">
 
-            <TextView
-                android:id="@+id/MainContent6_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.5"
-                android:text="TextView"
-                android:textAlignment="center"
-                tools:text="FIS시스템 주식회사..." />
+                <TextView
+                    android:id="@+id/MainContent6_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="TextView"
+                    android:textAlignment="center"
+                    />
 
-            <TextView
-                android:id="@+id/MainContent6_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="TextView"
-                android:textAlignment="center"
-                tools:text="2017-05-24" />
+                <TextView
+                    android:id="@+id/MainContent6_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="TextView"
+                    android:textAlignment="center"
+                    />
 
-        </TableRow>
+                <TextView
+                    android:id="@+id/MainContent6_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="TextView"
+                    android:textAlignment="center"
+                    />
 
-        <TableRow
-            android:id="@+id/MoreButton"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:gravity="right">
+            </TableRow>
 
-            <Button
-                android:id="@+id/MoreButton"
-                android:layout_width="wrap_content"
+            <TableRow
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:onClick="onMoreButtonClicked"
-                android:text="더보기"
-                tools:text="더보기" />
-        </TableRow>
+                android:gravity="right">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="10dp">
+                <Button
+                    android:id="@+id/MoreButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="더보기"
+                    />
+            </TableRow>
 
-            <Button
-                android:id="@+id/Tap1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="리쿠르팅탭"
-                tools:text="리크루팅" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="10dp">
 
-            <Button
-                android:id="@+id/Tap2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="채용설명회탭"
-                tools:text="채용설명회" />
+                <Button
+                    android:id="@+id/Tap1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="리쿠르팅탭"
+                    />
 
-        </TableRow>
+                <Button
+                    android:id="@+id/Tap2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="채용설명회탭"
+                    />
 
-    </TableLayout>
+            </TableRow>
+
+        </TableLayout>
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/SKKULinkButton"
