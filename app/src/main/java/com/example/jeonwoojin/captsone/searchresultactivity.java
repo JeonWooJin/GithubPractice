@@ -37,14 +37,6 @@ public class searchresultactivity extends AppCompatActivity {
             setContentView(R.layout.searchresult);
             searchinput = (EditText) findViewById(R.id.SearchBoxInput);
 
-            String filename = "input.txt";
-            try{
-                Scanner input = new Scanner(new File(filename));
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-
-
             Intent previnput = getIntent();
             String presearchinput = previnput.getStringExtra("searchword");
             DropDown1 = previnput.getStringExtra("category");
