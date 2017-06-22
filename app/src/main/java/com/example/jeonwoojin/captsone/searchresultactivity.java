@@ -154,6 +154,7 @@ public class searchresultactivity extends AppCompatActivity {
 
             listView = (ListView) findViewById(R.id.SearchlistView);
             listviewadapter = new SearchResultContentAdapter();
+
             for (int i = 0; i < 5; i++) {
                 listviewadapter.addItem(new SearchResultContent("리크루팅", "인사캠", "종료", "인사캠 : 17.05.25 10:00 ~ 17:00",
                         "17년도 Naver 및 관계사 하계 인턴십 모집" + i));
