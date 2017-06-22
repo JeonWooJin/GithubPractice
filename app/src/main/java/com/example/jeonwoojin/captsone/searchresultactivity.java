@@ -161,28 +161,136 @@ public class searchresultactivity extends AppCompatActivity {
 
             listView = (ListView) findViewById(R.id.SearchlistView);
             listviewadapter = new SearchResultContentAdapter();
-            if(DropDown1.equals("리크루팅")){
-                for (int i = 0; i < reMatrix.size(); i++) {
-                    listviewadapter.addItem(new SearchResultContent(reMatrix.get(i)[0],reMatrix.get(i)[1],
-                            reMatrix.get(i)[2],reMatrix.get(i)[3],reMatrix.get(i)[4]));
+
+            if(searchinput.equals("")){
+                if(DropDown2.equals("캠퍼스전체")){
+                    if(DropDown1.equals("리크루팅")){
+                        for (int i = 0; i < reMatrix.size(); i++) {
+                            listviewadapter.addItem(new SearchResultContent(reMatrix.get(i)[0],reMatrix.get(i)[1],
+                                    reMatrix.get(i)[2],reMatrix.get(i)[3],reMatrix.get(i)[4]));
+                        }
+                    }
+                    else if(DropDown1.equals("취업설명회")){
+                        for (int i = 0; i < chMatrix.size(); i++) {
+                            listviewadapter.addItem(new SearchResultContent(chMatrix.get(i)[0],chMatrix.get(i)[1],
+                                    chMatrix.get(i)[2],chMatrix.get(i)[3],chMatrix.get(i)[4]));
+                        }
+                    }
+                    else if(DropDown1.equals("전체")){
+                        for (int i = 0; i < reMatrix.size(); i++) {
+                            listviewadapter.addItem(new SearchResultContent(reMatrix.get(i)[0],reMatrix.get(i)[1],
+                                    reMatrix.get(i)[2],reMatrix.get(i)[3],reMatrix.get(i)[4]));
+                        }
+                        for (int i = 0; i < chMatrix.size(); i++) {
+                            listviewadapter.addItem(new SearchResultContent(chMatrix.get(i)[0],chMatrix.get(i)[1],
+                                    chMatrix.get(i)[2],chMatrix.get(i)[3],chMatrix.get(i)[4]));
+                        }
+                    }
+                }
+                else{
+                    if(DropDown1.equals("리크루팅")){
+                        for (int i = 0; i < reMatrix.size(); i++) {
+                            if(reMatrix.get(i)[0].equals(DropDown2)){
+                                listviewadapter.addItem(new SearchResultContent(reMatrix.get(i)[0],reMatrix.get(i)[1],
+                                        reMatrix.get(i)[2],reMatrix.get(i)[3],reMatrix.get(i)[4]));
+                            }
+                        }
+                    }
+                    else if(DropDown1.equals("취업설명회")){
+                        for (int i = 0; i < chMatrix.size(); i++) {
+                            if(chMatrix.get(i)[0].equals(DropDown2)){
+                                listviewadapter.addItem(new SearchResultContent(chMatrix.get(i)[0],chMatrix.get(i)[1],
+                                        chMatrix.get(i)[2],chMatrix.get(i)[3],chMatrix.get(i)[4]));
+                            }
+                        }
+                    }
+                    else if(DropDown1.equals("전체")){
+                        for (int i = 0; i < reMatrix.size(); i++) {
+                            if(reMatrix.get(i)[0].equals(DropDown2)){
+                                listviewadapter.addItem(new SearchResultContent(reMatrix.get(i)[0],reMatrix.get(i)[1],
+                                        reMatrix.get(i)[2],reMatrix.get(i)[3],reMatrix.get(i)[4]));
+                            }
+                        }
+                        for (int i = 0; i < chMatrix.size(); i++) {
+                            if(chMatrix.get(i)[0].equals(DropDown2)){
+                                listviewadapter.addItem(new SearchResultContent(chMatrix.get(i)[0],chMatrix.get(i)[1],
+                                        chMatrix.get(i)[2],chMatrix.get(i)[3],chMatrix.get(i)[4]));
+                            }
+                        }
+                    }
                 }
             }
-            else if(DropDown1.equals("취업설명회")){
-                for (int i = 0; i < chMatrix.size(); i++) {
-                    listviewadapter.addItem(new SearchResultContent(chMatrix.get(i)[0],chMatrix.get(i)[1],
-                            chMatrix.get(i)[2],chMatrix.get(i)[3],chMatrix.get(i)[4]));
+            else{
+                if(DropDown2.equals("캠퍼스전체")){
+                    if(DropDown1.equals("리크루팅")){
+                        for (int i = 0; i < reMatrix.size(); i++) {
+                            if(reMatrix.get(i)[1].contains(searchinput.getText())||reMatrix.get(i)[2].contains(searchinput.getText())) {
+                                listviewadapter.addItem(new SearchResultContent(reMatrix.get(i)[0], reMatrix.get(i)[1],
+                                        reMatrix.get(i)[2], reMatrix.get(i)[3], reMatrix.get(i)[4]));
+                            }
+                        }
+                    }
+                    else if(DropDown1.equals("취업설명회")){
+                        for (int i = 0; i < chMatrix.size(); i++) {
+                            if(chMatrix.get(i)[1].contains(searchinput.getText())||chMatrix.get(i)[2].contains(searchinput.getText())){
+                                listviewadapter.addItem(new SearchResultContent(chMatrix.get(i)[0],chMatrix.get(i)[1],
+                                        chMatrix.get(i)[2],chMatrix.get(i)[3],chMatrix.get(i)[4]));
+                            }
+                        }
+                    }
+                    else if(DropDown1.equals("전체")){
+                        for (int i = 0; i < reMatrix.size(); i++) {
+                            if(reMatrix.get(i)[1].contains(searchinput.getText())||reMatrix.get(i)[2].contains(searchinput.getText())){
+                                listviewadapter.addItem(new SearchResultContent(reMatrix.get(i)[0],reMatrix.get(i)[1],
+                                        reMatrix.get(i)[2],reMatrix.get(i)[3],reMatrix.get(i)[4]));
+                            }
+                        }
+                        for (int i = 0; i < chMatrix.size(); i++) {
+                            if(chMatrix.get(i)[1].contains(searchinput.getText())||chMatrix.get(i)[2].contains(searchinput.getText())){
+                                listviewadapter.addItem(new SearchResultContent(chMatrix.get(i)[0],chMatrix.get(i)[1],
+                                        chMatrix.get(i)[2],chMatrix.get(i)[3],chMatrix.get(i)[4]));
+                            }
+                        }
+                    }
+                }
+                else {
+                    if(DropDown1.equals("리크루팅")){
+                        for (int i = 0; i < reMatrix.size(); i++) {
+                            if((reMatrix.get(i)[1].contains(searchinput.getText())||reMatrix.get(i)[2].contains(searchinput.getText()))
+                                    && reMatrix.get(i)[0].equals(DropDown2)) {
+                                listviewadapter.addItem(new SearchResultContent(reMatrix.get(i)[0], reMatrix.get(i)[1],
+                                        reMatrix.get(i)[2], reMatrix.get(i)[3], reMatrix.get(i)[4]));
+                            }
+                        }
+                    }
+                    else if(DropDown1.equals("취업설명회")){
+                        for (int i = 0; i < chMatrix.size(); i++) {
+                            if((chMatrix.get(i)[1].contains(searchinput.getText())||chMatrix.get(i)[2].contains(searchinput.getText()))
+                                    && chMatrix.get(i)[0].equals(DropDown2)){
+                                listviewadapter.addItem(new SearchResultContent(chMatrix.get(i)[0],chMatrix.get(i)[1],
+                                        chMatrix.get(i)[2],chMatrix.get(i)[3],chMatrix.get(i)[4]));
+                            }
+                        }
+                    }
+                    else if(DropDown1.equals("전체")){
+                        for (int i = 0; i < reMatrix.size(); i++) {
+                            if((reMatrix.get(i)[1].contains(searchinput.getText())||reMatrix.get(i)[2].contains(searchinput.getText()))
+                                    && reMatrix.get(i)[0].equals(DropDown2)){
+                                listviewadapter.addItem(new SearchResultContent(reMatrix.get(i)[0],reMatrix.get(i)[1],
+                                        reMatrix.get(i)[2],reMatrix.get(i)[3],reMatrix.get(i)[4]));
+                            }
+                        }
+                        for (int i = 0; i < chMatrix.size(); i++) {
+                            if((chMatrix.get(i)[1].contains(searchinput.getText())||chMatrix.get(i)[2].contains(searchinput.getText()))
+                                    && chMatrix.get(i)[0].equals(DropDown2)){
+                                listviewadapter.addItem(new SearchResultContent(chMatrix.get(i)[0],chMatrix.get(i)[1],
+                                        chMatrix.get(i)[2],chMatrix.get(i)[3],chMatrix.get(i)[4]));
+                            }
+                        }
+                    }
                 }
             }
-            else if(DropDown1.equals("전체")){
-                for (int i = 0; i < reMatrix.size(); i++) {
-                    listviewadapter.addItem(new SearchResultContent(reMatrix.get(i)[0],reMatrix.get(i)[1],
-                            reMatrix.get(i)[2],reMatrix.get(i)[3],reMatrix.get(i)[4]));
-                }
-                for (int i = 0; i < chMatrix.size(); i++) {
-                    listviewadapter.addItem(new SearchResultContent(chMatrix.get(i)[0],chMatrix.get(i)[1],
-                            chMatrix.get(i)[2],chMatrix.get(i)[3],chMatrix.get(i)[4]));
-                }
-            }
+
 
 
             listView.setAdapter(listviewadapter);
