@@ -9,7 +9,9 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -19,6 +21,7 @@ public class detailResult extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detailresult);
+
         class SearchResultContentAdapter extends BaseAdapter {
             ArrayList<SearchResultContent> items = new ArrayList<SearchResultContent>();
 
@@ -51,17 +54,32 @@ public class detailResult extends AppCompatActivity {
             }
         }
 
-        ListView listView;
-        SearchResultContentAdapter listviewadapter;
+        final ListView listView;
+        final SearchResultContentAdapter listviewadapter;
 
-        listView = (ListView) findViewById(R.id.ResultlistView);
+        listView = (ListView) findViewById(R.id.detailresult);
         listviewadapter = new SearchResultContentAdapter();
+        Intent previnput = getIntent();
+        String[] result = new String[5];
 
-        listviewadapter.addItem(new SearchResultContent("리크루팅", "인사캠", "종료", "인사캠 : 17.05.25 10:00 ~ 17:00",
-                    "17년도 Naver 및 관계사 하계 인턴십 모집"));
 
 
+        listviewadapter.addItem(new SearchResultContent(previnput.getStringExtra("company"),previnput.getStringExtra("time")
+                ,previnput.getStringExtra("content"),previnput.getStringExtra("campus"),previnput.getStringExtra("status")));
         listView.setAdapter(listviewadapter);
+
+
+
+        Button AddCalender = (Button) findViewById(R.id.AddCalender);
+        AddCalender.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_EDIT);
+                i.setType("vnd.android.cursor.item/event");
+                startActivity(i);
+            }
+        });
+
     }
     public boolean onCreateOptionsMenu(Menu menu) {
         ActionBar actionBar = getSupportActionBar();
@@ -76,20 +94,26 @@ public class detailResult extends AppCompatActivity {
         View actionbar = inflater.inflate(R.layout.actionbar, null);
 
         actionBar.setCustomView(actionbar);
+        Button BackButton = (Button) findViewById(R.id.btnBack);
+        BackButton.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        Button HomeButton = (Button) findViewById(R.id.btnhome);
+        HomeButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                finish();
+                startActivity(i);
+            }
+        });
         return true;
     }
 
-    void onBackButtonClicked(View v){
-        finish();
-    }
-    void onHomeButtonClicked(View v){
-        Intent i = new Intent(getApplicationContext(), MainActivity.class);
-        finish();
-        startActivity(i);
-    }
-    void AddCalenderClicked(View v){
-        Intent i = new Intent(Intent.ACTION_EDIT);
-        i.setType("vnd.android.cursor.item/event");
-        startActivity(i);
-    }
+
 }

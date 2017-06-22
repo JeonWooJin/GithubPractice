@@ -44,64 +44,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main);
         searchinput = (EditText) findViewById(R.id.SearchBoxInput);
 
-        //CSV파일에서 읽어오기
-        String filename = "리크루팅.csv";
-        int filerowcount = 0;
-        try {
-            Scanner input = new Scanner(new File(filename));
-
-            while(input.hasNext()){
-                filerowcount++;
-            }
-
-        }catch (FileNotFoundException e){
-            e.printStackTrace();
-        }
-        String[][] recruitarr = new String[filerowcount][6];
-        String filename1 = "채용설명회.csv";
-        int filerowcount1 = 0;
-        try {
-            Scanner input2 = new Scanner(new File(filename1));
-
-            while(input2.hasNext()){
-                filerowcount1++;
-            }
-
-        }catch (FileNotFoundException e){
-            e.printStackTrace();
-        }
-        String[][] conferencearr = new String[filerowcount1][6];
-
-        try{
-            int inputflag = 0;
-            Scanner input1 = new Scanner(new File("re.csv"));
-            while(input1.hasNext()){
-                String tempstr = input1.nextLine();
-                String[] temp = tempstr.split(",");
-                for(int i = 0;i<temp.length;i++){
-                    recruitarr[inputflag][i] = temp[i];
-                }
-                inputflag++;
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        try{
-            int inputflag = 0;
-            Scanner input2 = new Scanner(new File("ch.csv"));
-            while(input2.hasNext()){
-                String tempstr = input2.nextLine();
-                String[] temp = tempstr.split(",");
-                for(int i = 0;i<temp.length;i++){
-                    recruitarr[inputflag][i] = temp[i];
-                }
-                inputflag++;
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
         Button searchButton = (Button) findViewById(R.id.SearchButton);
         searchButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
@@ -118,13 +60,17 @@ public class MainActivity extends AppCompatActivity {
         moreButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
                 Intent i = new Intent(getApplicationContext(), searchresultactivity.class);
+                i.putExtra("searchword",searchinput.getText().toString());
+                i.putExtra("category",DropDown1);
+                i.putExtra("campus",DropDown2);
+                i.putExtra("content",DropDown3);
                 startActivity(i);
             }
         });
 
-        Spinner spinner1 = (Spinner) findViewById(R.id.spinner1);
-        Spinner spinner2 = (Spinner) findViewById(R.id.spinner2);
-        Spinner spinner3 = (Spinner) findViewById(R.id.spinner3);
+        final Spinner spinner1 = (Spinner) findViewById(R.id.spinner1);
+        final Spinner spinner2 = (Spinner) findViewById(R.id.spinner2);
+        final Spinner spinner3 = (Spinner) findViewById(R.id.spinner3);
         // 스피너 이용 드롭다운
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(
                 this,
@@ -151,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                DropDown1 = SpinnerArr1[position];
+                DropDown1 = spinner1.getSelectedItem().toString();
             }
 
             @Override
@@ -162,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
         spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                DropDown2 = SpinnerArr2[position];
+                DropDown2 = spinner2.getSelectedItem().toString();
             }
 
             @Override
@@ -173,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                DropDown3 = SpinnerArr3[position];
+                DropDown3 = spinner3.getSelectedItem().toString();
             }
 
             @Override
@@ -182,6 +128,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button SkkuButton = (Button) findViewById(R.id.SKKULinkButton);
+        SkkuButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://job.skku.edu"));
+                startActivity(i);
+            }
+        });
     }
     public boolean onCreateOptionsMenu(Menu menu) {
         ActionBar actionBar = getSupportActionBar();
@@ -196,21 +150,30 @@ public class MainActivity extends AppCompatActivity {
         View actionbar = inflater.inflate(R.layout.actionbar, null);
 
         actionBar.setCustomView(actionbar);
+        Button BackButton = (Button) findViewById(R.id.btnBack);
+        BackButton.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        Button HomeButton = (Button) findViewById(R.id.btnhome);
+        HomeButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                finish();
+                startActivity(i);
+            }
+        });
+
 
         return true;
     }
-    void onSKKUlinkButtonClicked(View v){ // 학생 인재개발팀 Contact 버튼 연결
-        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://job.skku.edu"));
-        startActivity(i);
-    }
-    void onBackButtonClicked(View v){
-        finish();
-    }
-    void onHomeButtonClicked(View v){
-        Intent i = new Intent(getApplicationContext(), MainActivity.class);
-        finish();
-        startActivity(i);
-    }
+
+
     void onContentClicked(View v){
         Intent i = new Intent(getApplicationContext(), detailResult.class);
         startActivity(i);

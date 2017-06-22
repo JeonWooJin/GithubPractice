@@ -37,29 +37,3 @@ public class CSVFile {
         return results;
     }
 }
-        /*BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-        String[][] matrix = new String[100][6];
-        try {
-            int inputflag = 0;
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] temparr = line.split(",");
-                for(int i = 0;i<temparr.length;i++){
-                    matrix[inputflag][i] = temparr[i];
-                }
-                inputflag++;
-            }
-        }
-        catch (IOException ex) {
-            throw new RuntimeException("Error in reading CSV file: "+ex);
-        }
-        finally {
-            try {
-                inputStream.close();
-            }
-            catch (IOException e) {
-                throw new RuntimeException("Error while closing input stream: "+e);
-            }
-        }
-        return matrix;
-    }*/

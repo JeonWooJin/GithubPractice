@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import java.io.InputStream;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +40,10 @@ public class searchresultactivity extends AppCompatActivity {
             CSVFile CSV1 = new CSVFile(inputStream);
             ArrayList<String[]> reMatrix = (ArrayList) CSV1.read();
 
+            InputStream inputStream1 = getResources().openRawResource(R.raw.ch);
+            CSVFile CSV2 = new CSVFile(inputStream1);
+            ArrayList<String[]> chMatrix = (ArrayList) CSV2.read();
+
             Intent previnput = getIntent();
             String presearchinput = previnput.getStringExtra("searchword");
             DropDown1 = previnput.getStringExtra("category");
@@ -59,9 +64,9 @@ public class searchresultactivity extends AppCompatActivity {
                 }
             });
 
-        Spinner spinner1 = (Spinner) findViewById(R.id.spinner1);
-        Spinner spinner2 = (Spinner) findViewById(R.id.spinner2);
-        Spinner spinner3 = (Spinner) findViewById(R.id.spinner3);
+        final Spinner spinner1 = (Spinner) findViewById(R.id.spinner1);
+        final Spinner spinner2 = (Spinner) findViewById(R.id.spinner2);
+        final Spinner spinner3 = (Spinner) findViewById(R.id.spinner3);
         // 스피너 이용 드롭다운
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(
                 this,
@@ -88,7 +93,7 @@ public class searchresultactivity extends AppCompatActivity {
         spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                DropDown1 = SpinnerArr1[position];
+                DropDown1 = spinner1.getSelectedItem().toString();
             }
 
             @Override
@@ -99,7 +104,7 @@ public class searchresultactivity extends AppCompatActivity {
         spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                DropDown2 = SpinnerArr2[position];
+                DropDown2 = spinner2.getSelectedItem().toString();
             }
 
             @Override
@@ -110,7 +115,7 @@ public class searchresultactivity extends AppCompatActivity {
         spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                DropDown3 = SpinnerArr3[position];
+                DropDown3 = spinner3.getSelectedItem().toString();
             }
 
             @Override
@@ -151,22 +156,46 @@ public class searchresultactivity extends AppCompatActivity {
                 }
             }
 
-            ListView listView;
-            SearchResultContentAdapter listviewadapter;
+            final ListView listView;
+            final SearchResultContentAdapter listviewadapter;
 
             listView = (ListView) findViewById(R.id.SearchlistView);
             listviewadapter = new SearchResultContentAdapter();
-
-            for (int i = 0; i < 6; i++) {
-                listviewadapter.addItem(new SearchResultContent(reMatrix.get(i)[0],reMatrix.get(i)[1],
-                        reMatrix.get(i)[2],reMatrix.get(i)[3],reMatrix.get(i)[4]));
+            if(DropDown1.equals("리크루팅")){
+                for (int i = 0; i < reMatrix.size(); i++) {
+                    listviewadapter.addItem(new SearchResultContent(reMatrix.get(i)[0],reMatrix.get(i)[1],
+                            reMatrix.get(i)[2],reMatrix.get(i)[3],reMatrix.get(i)[4]));
+                }
             }
+            else if(DropDown1.equals("취업설명회")){
+                for (int i = 0; i < chMatrix.size(); i++) {
+                    listviewadapter.addItem(new SearchResultContent(chMatrix.get(i)[0],chMatrix.get(i)[1],
+                            chMatrix.get(i)[2],chMatrix.get(i)[3],chMatrix.get(i)[4]));
+                }
+            }
+            else if(DropDown1.equals("전체")){
+                for (int i = 0; i < reMatrix.size(); i++) {
+                    listviewadapter.addItem(new SearchResultContent(reMatrix.get(i)[0],reMatrix.get(i)[1],
+                            reMatrix.get(i)[2],reMatrix.get(i)[3],reMatrix.get(i)[4]));
+                }
+                for (int i = 0; i < chMatrix.size(); i++) {
+                    listviewadapter.addItem(new SearchResultContent(chMatrix.get(i)[0],chMatrix.get(i)[1],
+                            chMatrix.get(i)[2],chMatrix.get(i)[3],chMatrix.get(i)[4]));
+                }
+            }
+
 
             listView.setAdapter(listviewadapter);
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Intent i = new Intent(getApplicationContext(), detailResult.class);
+
+                    i.putExtra("campus", listviewadapter.items.get(position).campus);
+                    i.putExtra("time",listviewadapter.items.get(position).time);
+                    i.putExtra("company",listviewadapter.items.get(position).company);
+                    i.putExtra("status",listviewadapter.items.get(position).status);
+                    i.putExtra("content",listviewadapter.items.get(position).contenttitle);
 
                     startActivity(i);
                 }
@@ -189,16 +218,28 @@ public class searchresultactivity extends AppCompatActivity {
 
         actionBar.setCustomView(actionbar);
 
+        Button BackButton = (Button) findViewById(R.id.btnBack);
+        BackButton.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        Button HomeButton = (Button) findViewById(R.id.btnhome);
+        HomeButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                finish();
+                startActivity(i);
+            }
+        });
+
         return true;
     }
-    void onBackButtonClicked(View v){
-        finish();
-    }
-    void onHomeButtonClicked(View v){
-        Intent i = new Intent(getApplicationContext(), MainActivity.class);
-        finish();
-        startActivity(i);
-    }
+
     void onContentClicked(View v){
         Intent i = new Intent(getApplicationContext(), detailResult.class);
         startActivity(i);
