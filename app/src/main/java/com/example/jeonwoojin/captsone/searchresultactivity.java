@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
@@ -17,10 +16,12 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.List;
 
 public class searchresultactivity extends AppCompatActivity {
     String[] SpinnerArr1 = {"전체","취업설명회","리크루팅"};
@@ -37,6 +38,43 @@ public class searchresultactivity extends AppCompatActivity {
             setContentView(R.layout.searchresult);
             searchinput = (EditText) findViewById(R.id.SearchBoxInput);
 
+            InputStream inputStream = getResources().openRawResource(R.raw.re);
+            CSVFile CSV1 = new CSVFile(inputStream);
+            String[][] reMatrix;
+            reMatrix = CSV1.read().clone();
+
+            /*String filename = "re.csv";
+            int filerowcount = 0;
+            try {
+                Scanner input = new Scanner(new File(filename));
+
+                while(input.hasNext()){
+                    filerowcount++;
+                }
+                input.close();
+
+            }catch (FileNotFoundException e){
+                finish();
+                e.printStackTrace();
+            }
+            String[][] recruitarr = new String[filerowcount][6];
+
+            try{
+                int inputflag = 0;
+                Scanner input = new Scanner(new File(filename));
+                while(input.hasNext()){
+                    String temp = input.nextLine();
+                    String[] temparr = temp.split(",");
+                    for(int i = 0;i<temparr.length;i++){
+                        recruitarr[inputflag][i] = temparr[i];
+                    }
+                    inputflag++;
+                }
+                input.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            */
             Intent previnput = getIntent();
             String presearchinput = previnput.getStringExtra("searchword");
             DropDown1 = previnput.getStringExtra("category");
@@ -139,7 +177,7 @@ public class searchresultactivity extends AppCompatActivity {
                 public View getView(int position, View converView, ViewGroup viewGroup) {
                     SearchResultContentView view = new SearchResultContentView(getApplicationContext());
                     SearchResultContent item = items.get(position);
-                    view.setCategory(item.getCategory());
+                    view.setCompany(item.getCompany());
                     view.setCampus(item.getCampus());
                     view.setStatus(item.getStatus());
                     view.setContenttitle(item.getContenttitle());
@@ -156,8 +194,9 @@ public class searchresultactivity extends AppCompatActivity {
             listviewadapter = new SearchResultContentAdapter();
 
             for (int i = 0; i < 5; i++) {
-                listviewadapter.addItem(new SearchResultContent("리크루팅", "인사캠", "종료", "인사캠 : 17.05.25 10:00 ~ 17:00",
-                        "17년도 Naver 및 관계사 하계 인턴십 모집" + i));
+                listviewadapter.addItem(new SearchResultContent(reMatrix[i][0],reMatrix[i][1],reMatrix[i][2],reMatrix[i][3],reMatrix[i][4]));
+
+
             }
 
             listView.setAdapter(listviewadapter);
@@ -170,6 +209,9 @@ public class searchresultactivity extends AppCompatActivity {
                 }
             });
         }
+
+
+
     public boolean onCreateOptionsMenu(Menu menu) {
         ActionBar actionBar = getSupportActionBar();
 

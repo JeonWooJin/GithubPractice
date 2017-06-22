@@ -21,7 +21,11 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+import java.io.EOFException;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -33,11 +37,70 @@ public class MainActivity extends AppCompatActivity {
     static String DropDown3 = "기업명+제목";
     EditText searchinput;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         searchinput = (EditText) findViewById(R.id.SearchBoxInput);
+
+        //CSV파일에서 읽어오기
+        String filename = "리크루팅.csv";
+        int filerowcount = 0;
+        try {
+            Scanner input = new Scanner(new File(filename));
+
+            while(input.hasNext()){
+                filerowcount++;
+            }
+
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+        }
+        String[][] recruitarr = new String[filerowcount][6];
+        String filename1 = "채용설명회.csv";
+        int filerowcount1 = 0;
+        try {
+            Scanner input2 = new Scanner(new File(filename1));
+
+            while(input2.hasNext()){
+                filerowcount1++;
+            }
+
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+        }
+        String[][] conferencearr = new String[filerowcount1][6];
+
+        try{
+            int inputflag = 0;
+            Scanner input1 = new Scanner(new File("re.csv"));
+            while(input1.hasNext()){
+                String tempstr = input1.nextLine();
+                String[] temp = tempstr.split(",");
+                for(int i = 0;i<temp.length;i++){
+                    recruitarr[inputflag][i] = temp[i];
+                }
+                inputflag++;
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        try{
+            int inputflag = 0;
+            Scanner input2 = new Scanner(new File("ch.csv"));
+            while(input2.hasNext()){
+                String tempstr = input2.nextLine();
+                String[] temp = tempstr.split(",");
+                for(int i = 0;i<temp.length;i++){
+                    recruitarr[inputflag][i] = temp[i];
+                }
+                inputflag++;
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
         Button searchButton = (Button) findViewById(R.id.SearchButton);
         searchButton.setOnClickListener(new View.OnClickListener(){

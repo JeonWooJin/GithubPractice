@@ -5,21 +5,21 @@ package com.example.jeonwoojin.captsone;
  */
 
 public class SearchResultContent {
-    String category, campus, status, time, contenttitle;
+    String company, campus, status, time, contenttitle;
 
-    public SearchResultContent(String category, String campus, String status, String time, String contenttitle){
-        this.category = category;
+    public SearchResultContent( String campus, String company,  String contenttitle, String time, String status){
+        this.company = company;
         this.campus = campus;
         this.status = status;
         this.time  = time;
         this.contenttitle = contenttitle;
     }
 
-    public String getCategory(){
-        return category;
+    public String getCompany(){
+        return company;
     }
-    public void setCategory(String category){
-        this.category = category;
+    public void setCompany(String company){
+        this.company = company;
     }
     public String getCampus(){
         return campus;

@@ -41,7 +41,7 @@ public class detailResult extends AppCompatActivity {
             public View getView(int position, View converView, ViewGroup viewGroup) {
                 SearchResultContentView view = new SearchResultContentView(getApplicationContext());
                 SearchResultContent item = items.get(position);
-                view.setCategory(item.getCategory());
+                view.setCompany(item.getCompany());
                 view.setCampus(item.getCampus());
                 view.setStatus(item.getStatus());
                 view.setContenttitle(item.getContenttitle());
@@ -85,6 +85,11 @@ public class detailResult extends AppCompatActivity {
     void onHomeButtonClicked(View v){
         Intent i = new Intent(getApplicationContext(), MainActivity.class);
         finish();
+        startActivity(i);
+    }
+    void AddCalenderClicked(View v){
+        Intent i = new Intent(Intent.ACTION_EDIT);
+        i.setType("vnd.android.cursor.item/event");
         startActivity(i);
     }
 }

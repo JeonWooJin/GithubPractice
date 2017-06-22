@@ -4,7 +4,20 @@
     android:layout_height="match_parent">
 
     <ListView
+        android:id="@+id/ResultlistView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/ResultlistView"/>
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="상세 정보"/>
+
+    <Button
+        android:id="@+id/AddCalender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:onClick="AddCalenderClicked"
+        android:text="일정에 추가하기" />
 </LinearLayout>
