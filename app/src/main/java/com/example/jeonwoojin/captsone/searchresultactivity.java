@@ -15,13 +15,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
-
-import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class searchresultactivity extends AppCompatActivity {
     String[] SpinnerArr1 = {"전체","취업설명회","리크루팅"};
@@ -40,41 +37,8 @@ public class searchresultactivity extends AppCompatActivity {
 
             InputStream inputStream = getResources().openRawResource(R.raw.re);
             CSVFile CSV1 = new CSVFile(inputStream);
-            String[][] reMatrix;
-            reMatrix = CSV1.read().clone();
+            ArrayList<String[]> reMatrix = (ArrayList) CSV1.read();
 
-            /*String filename = "re.csv";
-            int filerowcount = 0;
-            try {
-                Scanner input = new Scanner(new File(filename));
-
-                while(input.hasNext()){
-                    filerowcount++;
-                }
-                input.close();
-
-            }catch (FileNotFoundException e){
-                finish();
-                e.printStackTrace();
-            }
-            String[][] recruitarr = new String[filerowcount][6];
-
-            try{
-                int inputflag = 0;
-                Scanner input = new Scanner(new File(filename));
-                while(input.hasNext()){
-                    String temp = input.nextLine();
-                    String[] temparr = temp.split(",");
-                    for(int i = 0;i<temparr.length;i++){
-                        recruitarr[inputflag][i] = temparr[i];
-                    }
-                    inputflag++;
-                }
-                input.close();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            */
             Intent previnput = getIntent();
             String presearchinput = previnput.getStringExtra("searchword");
             DropDown1 = previnput.getStringExtra("category");
@@ -193,10 +157,9 @@ public class searchresultactivity extends AppCompatActivity {
             listView = (ListView) findViewById(R.id.SearchlistView);
             listviewadapter = new SearchResultContentAdapter();
 
-            for (int i = 0; i < 5; i++) {
-                listviewadapter.addItem(new SearchResultContent(reMatrix[i][0],reMatrix[i][1],reMatrix[i][2],reMatrix[i][3],reMatrix[i][4]));
-
-
+            for (int i = 0; i < 6; i++) {
+                listviewadapter.addItem(new SearchResultContent(reMatrix.get(i)[0],reMatrix.get(i)[1],
+                        reMatrix.get(i)[2],reMatrix.get(i)[3],reMatrix.get(i)[4]));
             }
 
             listView.setAdapter(listviewadapter);

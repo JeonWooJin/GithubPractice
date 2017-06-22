@@ -3,27 +3,42 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 public class CSVFile {
-    InputStream inputStream;
+    InputStream in;
 
-    public CSVFile(InputStream inputStream){
-        this.inputStream = inputStream;
+    public CSVFile(InputStream in) {
+        this.in = in;
     }
 
-    public String[][] read(){
-        int rowcount = 0;
-        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-        try{
+    public List<String[]> read() {
+        List<String[]> results = new ArrayList<String[]>();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+        try {
             String line;
-            while((line = reader.readLine())!= null){
-                rowcount++;
+            while ((line = reader.readLine()) != null) {
+                String[] row = line.split(",");
+                results.add(row);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Error reading CSV File " + e);
+        } finally {
+            try {
+                in.close();
+            } catch (IOException e) {
+                throw new RuntimeException("Error closing inputstream " + e);
+            }
         }
-        String[][] matrix = new String[rowcount][6];
+
+        return results;
+    }
+}
+        /*BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+        String[][] matrix = new String[100][6];
         try {
             int inputflag = 0;
             String line;
@@ -47,5 +62,4 @@ public class CSVFile {
             }
         }
         return matrix;
-    }
-}
+    }*/
