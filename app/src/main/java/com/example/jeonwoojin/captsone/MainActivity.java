@@ -35,60 +35,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-
-        InputStream inputStream = getResources().openRawResource(R.raw.re);
-        CSVFile CSV1 = new CSVFile(inputStream);
-        ArrayList<String[]> reMatrix = (ArrayList) CSV1.read();
-
-        InputStream inputStream1 = getResources().openRawResource(R.raw.ch);
-        CSVFile CSV2 = new CSVFile(inputStream1);
-        ArrayList<String[]> chMatrix = (ArrayList) CSV2.read();
-
-
-        class MainContentAdapter extends BaseAdapter {
-            ArrayList<MainContent> items = new ArrayList<>();
-
-            public int getCount() {
-                return items.size();
-            }
-
-            public void addItem(MainContent item) {
-                items.add(item);
-            }
-
-            public Object getItem(int position) {
-                return items.get(position);
-            }
-
-            public long getItemId(int position) {
-                return position;
-            }
-
-            public View getView(int position, View converView, ViewGroup viewGroup) {
-                MainContentView view = new MainContentView(getApplicationContext());
-                MainContent item = items.get(position);
-
-                view.setCampus(item.getCampus());
-                view.setContenttitle(item.getContenttitle());
-                view.setTime(item.getTime());
-
-                return view;
-            }
-        }
-
-        final ListView listView;
-        final MainContentAdapter listviewadapter;
-
-
-        listviewadapter = new MainContentAdapter();
-
-        for(int i = 0;i<6;i++){
-                listviewadapter.addItem(new MainContent(reMatrix.get(i)[0],reMatrix.get(i)[1],reMatrix.get(i)[3]));
-        }
-
-
-
-
         searchinput = (EditText) findViewById(R.id.SearchBoxInput);
 
         Button searchButton = (Button) findViewById(R.id.SearchButton);
